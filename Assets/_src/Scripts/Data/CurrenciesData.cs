@@ -5,7 +5,7 @@ using UnityEngine;
 namespace _src.Scripts.Data
 {
     [CreateAssetMenu(fileName = "NewCurrencyData", menuName = "GameData/Currency", order = 1)]
-    public class CurrencyData : ScriptableObject
+    public class CurrenciesData : ScriptableObject
     {
         public SerializedDictionary<CurrencyType, Currency> GameCurrencies = new();
     }

@@ -1,5 +1,7 @@
 using System;
 using _src.Scripts.Data;
+using AwesomeAttributes;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
@@ -10,19 +12,21 @@ namespace _src.Scripts.CoreFeatures
     {
         public CurrencyType CurrencyType;
         
-        public Image CurrencyIcon;
+        [Preview]
+        public Sprite CurrencyIcon;
 
         public int Value => _value;
 
         private int _value;
-
-        public Currency(CurrencyType currencyType, Image currencyIcon)
+        
+        [HideInInspector]
+        public UnityEvent<int> OnValueChanged = new();
+        public Currency(CurrencyType currencyType, Sprite currencyIcon)
         {
             CurrencyType = currencyType;
             CurrencyIcon = currencyIcon;
             _value = 0;
         }
-        public UnityEvent<int> OnValueChanged = new();
 
         public void ChangeValue(int value)
         {
