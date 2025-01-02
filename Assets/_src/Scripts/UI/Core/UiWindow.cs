@@ -4,7 +4,8 @@ namespace _src.Scripts.UI.Core
 {
     public abstract class UiWindow : MonoBehaviour
     {
-        [SerializeField] protected GameObject _content;
+        [SerializeField]
+        protected GameObject _content;
         
         protected enum State : byte
         {
