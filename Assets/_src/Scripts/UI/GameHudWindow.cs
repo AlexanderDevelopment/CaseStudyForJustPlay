@@ -10,43 +10,52 @@ using Zenject;
 
 namespace _src.Scripts.UI
 {
-    public class GameHudWindow : UiWindow
-    {
-        private CurrencyButtonsCollection _currencyButtonsCollection;
-
-        private CurrencyIndicatorsCollection _currencyIndicatorsCollection;
-        [SerializeField, Required]
-        private GridLayoutGroup _gridLayoutGroupButtons;
-        
-        [SerializeField, Required]
-        private HorizontalLayoutGroup _horizontalLayoutGroupIndicators;
+	public class GameHudWindow : UiWindow
+	{
+		private CurrencyButtonsCollection _currencyButtonsCollection;
 
 
-        [SerializeField, Required]
-        private CurrencyIndicator _currencyIndicatorPrefab;
-
-        [SerializeField, Required]
-        private CurrencyButtonUI _currencyButtonUIPrefab;
+		public CurrencyButtonsCollection CurrencyButtonsCollection => _currencyButtonsCollection;
 
 
-        [Inject]
-        private readonly GameConfig _gameConfig;
-        
-        
-        protected override void Awake()
-        {
-            _currencyButtonsCollection = new CurrencyButtonsCollection(_gridLayoutGroupButtons, _currencyButtonUIPrefab, _gameConfig);
-            _currencyButtonsCollection.CreateButtons();
-            _currencyIndicatorsCollection = new CurrencyIndicatorsCollection(_horizontalLayoutGroupIndicators, _currencyIndicatorPrefab, _currencyButtonsCollection.Buttons);
-            _currencyIndicatorsCollection.CreateIndicators();
-            base.Awake();
-            
-        }
+		private CurrencyIndicatorsCollection _currencyIndicatorsCollection;
 
 
-        private void IndicatorsSync()
-        {
-            
-        }
-    }
+		public CurrencyIndicatorsCollection CurrencyIndicatorsCollection => _currencyIndicatorsCollection;
+
+
+		[SerializeField, Required]
+		private GridLayoutGroup _gridLayoutGroupButtons;
+
+
+		[SerializeField, Required]
+		private HorizontalLayoutGroup _horizontalLayoutGroupIndicators;
+
+
+		[SerializeField, Required]
+		private CurrencyIndicator _currencyIndicatorPrefab;
+
+
+		[SerializeField, Required]
+		private CurrencyButtonUI _currencyButtonUIPrefab;
+
+
+		[Inject]
+		private readonly GameConfig _gameConfig;
+
+
+		protected override void Awake()
+		{
+			_currencyButtonsCollection = new CurrencyButtonsCollection(_gridLayoutGroupButtons, _currencyButtonUIPrefab, _gameConfig);
+			_currencyButtonsCollection.CreateButtons();
+			_currencyIndicatorsCollection = new CurrencyIndicatorsCollection(_horizontalLayoutGroupIndicators, _currencyIndicatorPrefab, _currencyButtonsCollection.Buttons);
+			_currencyIndicatorsCollection.CreateIndicators();
+			base.Awake();
+		}
+
+
+		private void IndicatorsSync()
+		{
+		}
+	}
 }

@@ -17,7 +17,7 @@ namespace _src.Scripts.UI.UIElements
 		protected Button _button;
 
 
-		public UnityEvent OnButtonClick = new();
+		public UnityEvent<UIButton> OnButtonClick = new();
 
 
 		protected void Start()
@@ -34,7 +34,7 @@ namespace _src.Scripts.UI.UIElements
 
 		private void Click()
 		{
-			OnButtonClick.Invoke();
+			OnButtonClick.Invoke(this);
 			if (ClickFeedbacks)
 				ClickFeedbacks.PlayFeedbacks();
 		}

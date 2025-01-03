@@ -1,4 +1,5 @@
 
+using System;
 using TetraCreations.Attributes;
 using UnityEngine;
 
@@ -8,10 +9,11 @@ namespace _src.Scripts.UI.Core
 	public class UiController : MonoBehaviour
 	{
 		private UiWindowsCollection _uiWindowsCollection = new();
-
-
-
+		
 		public UiWindowsCollection UIWindowsCollection => _uiWindowsCollection;
+
+
+		public GameHudWindow GameHudWindow => _uiWindowsCollection.FindWindow<GameHudWindow>();
 
 
 		[Button("ShowMainWindow")]
@@ -25,6 +27,12 @@ namespace _src.Scripts.UI.Core
 		{
 			_uiWindowsCollection.FindWindow<GameHudWindow>().Hide();
 		}
-		
+
+
+		private void Start()
+		{
+			//Showing start game window
+			_uiWindowsCollection.FindWindow<GameHudWindow>().Show();
+		}
 	}
 }
