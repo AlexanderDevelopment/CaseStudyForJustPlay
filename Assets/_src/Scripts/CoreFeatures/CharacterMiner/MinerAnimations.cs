@@ -2,6 +2,7 @@ using _src.Scripts.Utils;
 using Cysharp.Threading.Tasks;
 using TetraCreations.Attributes;
 using UnityEngine;
+using Zenject;
 
 
 namespace _src.Scripts.CoreFeatures.CharacterMiner
@@ -9,14 +10,17 @@ namespace _src.Scripts.CoreFeatures.CharacterMiner
 	public class MinerAnimations : MonoBehaviour
 	{
 		private Animator _animator;
-
+		
 
 		[SerializeField, Required]
 		private Transform _mineOreDetector;
 		
 		private static readonly int TriggerName = Animator.StringToHash("Mine");
 		private static readonly int IdleStateName = Animator.StringToHash("Idle");
-		
+
+
+		[Inject]
+		private MessageBus _messageBus;
 		private void Awake()
 		{
 			RoutineWork.InitializeComponentFromGameObject(gameObject, ref _animator);
@@ -45,9 +49,11 @@ namespace _src.Scripts.CoreFeatures.CharacterMiner
 					if (collider && collider.gameObject.TryGetComponent(out MineOre mineOre))
 					{
 						mineOre.PickAxeHit.PlayFeedbacks();
+						_messageBus.Invoke(BusMessages.OnOreHit, new OreHitSignal(mineOre.OreType));
 					}
 				}
 			}
+			
 		}
 	}
 }

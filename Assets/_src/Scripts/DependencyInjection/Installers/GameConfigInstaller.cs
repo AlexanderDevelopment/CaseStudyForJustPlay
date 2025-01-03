@@ -1,6 +1,7 @@
 using _src.Scripts.CoreFeatures;
 using _src.Scripts.CoreFeatures.CharacterMiner;
 using _src.Scripts.Data;
+using _src.Scripts.DependencyInjection.Factories;
 using _src.Scripts.UI.Core;
 using UnityEngine;
 using Zenject;
@@ -16,6 +17,11 @@ namespace _src.Scripts.DependencyInjection.Installers
 		
 		public override void InstallBindings()
 		{
+			Container.Bind<MessageBus>().FromComponentInHierarchy()
+				.AsSingle();
+			Container.Bind<IFactory<GameObject, GameObject>>()
+				.To<UniversalPrefabFactory>()
+				.AsTransient();
 			Container.BindInstances(GameConfig);
 			Container
 				.Bind<UiController>()

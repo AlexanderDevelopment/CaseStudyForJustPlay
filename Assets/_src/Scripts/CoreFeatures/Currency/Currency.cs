@@ -10,7 +10,6 @@ namespace _src.Scripts.CoreFeatures
 	public class Currency
 	{
 		public CurrencyType CurrencyType;
-
 		
 		public Sprite CurrencyIcon;
 

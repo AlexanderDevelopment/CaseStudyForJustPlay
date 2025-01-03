@@ -19,6 +19,9 @@ namespace _src.Scripts.UI.UIElements.CurrenciesIndicators
 		private Dictionary<CurrencyType,CurrencyIndicator> _indicators = new();
 
 
+		public Dictionary<CurrencyType, CurrencyIndicator> Indicators => _indicators;
+
+
 		public CurrencyIndicatorsCollection(HorizontalLayoutGroup horizontalLayoutGroupIndicators, CurrencyIndicator currencyIndicatorPrefab, Dictionary<CurrencyType,CurrencyButtonUI> buttons)
 		{
 			_horizontalLayoutGroupIndicators = horizontalLayoutGroupIndicators;

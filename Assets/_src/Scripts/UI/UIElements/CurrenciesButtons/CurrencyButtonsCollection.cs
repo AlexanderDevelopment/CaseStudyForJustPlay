@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using _src.Scripts.Data;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 
 namespace _src.Scripts.UI.CurrenciesButtons
@@ -31,11 +32,13 @@ namespace _src.Scripts.UI.CurrenciesButtons
 		}
 
 
-		public void CreateButtons()
+		public void CreateButtons(IFactory<GameObject, GameObject> factory)
 		{
 			foreach (var gameCurrency in _gameConfig.CurrenciesData.GameCurrencies.Values)
 			{
-				var newCurrencyButton = GameObject.Instantiate(_currencyButtonUIPrefab, _gridLayoutGroupButtons.transform);
+				var newCurrencyButtonGameObject =  factory.Create(_currencyButtonUIPrefab.gameObject);
+				var newCurrencyButton = newCurrencyButtonGameObject.GetComponent<CurrencyButtonUI>();
+				newCurrencyButton.transform.SetParent(_gridLayoutGroupButtons.transform);
 				newCurrencyButton.gameObject.name = $"{gameCurrency.CurrencyType.ToString()} UIButton";
 				newCurrencyButton.InitializeFields(gameCurrency.CurrencyIcon,gameCurrency.CurrencyButtonSprite , gameCurrency.CurrencyType);
 				_buttons.Add(gameCurrency.CurrencyType, newCurrencyButton);

@@ -2,9 +2,7 @@ using _src.Scripts.CoreFeatures.CharacterMiner;
 using _src.Scripts.Data;
 using _src.Scripts.UI.Core;
 using _src.Scripts.UI.CurrenciesButtons;
-using _src.Scripts.UI.UIElements;
 using Cysharp.Threading.Tasks;
-using TetraCreations.Attributes;
 using UnityEngine;
 using Zenject;
 
@@ -29,21 +27,27 @@ namespace _src.Scripts.CoreFeatures
 		private IMineSwitcher _mineSwitcher;
 
 
+		[Inject]
+		private MessageBus _messageBus;
+
+
 		private void Start()
 		{
-			foreach (var button in _uiController.GameHudWindow.CurrencyButtonsCollection.Buttons.Values)
-			{
-				button.OnButtonClick.AddListener(ButtonClickHandle);
-			}
+			_messageBus.Subscribe(BusMessages.OnButtonClick, ButtonClickHandle);
 		}
 
 
-
-		private void ButtonClickHandle(UIButton currencyButtonUI)
+		private void OnDestroy()
 		{
-			if (currencyButtonUI is CurrencyButtonUI currencyButton)
+			_messageBus.Unsubscribe(BusMessages.OnButtonClick, ButtonClickHandle);
+		}
+
+
+		private void ButtonClickHandle(object data)
+		{
+			if (data is OnButtonClickSignal onButtonClickSignal && onButtonClickSignal.Button is CurrencyButtonUI currencyButtonUI)
 			{
-				MineAsync(currencyButton.CurrencyType).Forget();
+				MineAsync(currencyButtonUI.CurrencyType).Forget();
 			}
 		}
 

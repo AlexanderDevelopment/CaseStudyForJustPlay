@@ -2,6 +2,7 @@ using _src.Scripts.Data;
 using _src.Scripts.UI.Core;
 using _src.Scripts.UI.CurrenciesButtons;
 using _src.Scripts.UI.UIElements.CurrenciesIndicators;
+using _src.Scripts.Utils;
 using TetraCreations.Attributes;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,6 +26,12 @@ namespace _src.Scripts.UI
 
 
 		[SerializeField, Required]
+		private Canvas _canvas;
+
+
+		public Canvas Canvas => _canvas;
+
+		[SerializeField, Required]
 		private GridLayoutGroup _gridLayoutGroupButtons;
 
 
@@ -43,11 +50,13 @@ namespace _src.Scripts.UI
 		[Inject]
 		private readonly GameConfig _gameConfig;
 
-
+		[Inject]
+		private IFactory<GameObject, GameObject> _factory;
 		protected override void Awake()
 		{
+			RoutineWork.InitializeComponentFromChildren(gameObject, ref _canvas);
 			_currencyButtonsCollection = new CurrencyButtonsCollection(_gridLayoutGroupButtons, _currencyButtonUIPrefab, _gameConfig);
-			_currencyButtonsCollection.CreateButtons();
+			_currencyButtonsCollection.CreateButtons(_factory);
 			_currencyIndicatorsCollection = new CurrencyIndicatorsCollection(_horizontalLayoutGroupIndicators, _currencyIndicatorPrefab, _currencyButtonsCollection.Buttons);
 			_currencyIndicatorsCollection.CreateIndicators();
 			base.Awake();
