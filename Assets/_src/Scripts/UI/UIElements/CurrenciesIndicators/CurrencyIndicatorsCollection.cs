@@ -32,8 +32,8 @@ namespace _src.Scripts.UI.UIElements.CurrenciesIndicators
 			foreach (var button in _buttons.Values)
 			{
 				var newCurrencyIndicator = GameObject.Instantiate(_currencyIndicatorPrefab, _horizontalLayoutGroupIndicators.transform);
-				newCurrencyIndicator.gameObject.name = $"{button.CurrencyType.ToString()} UIButtonIndicator";
-				//TODO Add loading from PlayerPrefs
+				newCurrencyIndicator.gameObject.name = $"{button.CurrencyType.ToString()} UIButton Indicator";
+				//TODO Add loading last currency value from PlayerPrefs
 				newCurrencyIndicator.Initialize(0, button.Icon.sprite, button.CurrencyType);
 				_indicators.Add(button.CurrencyType,newCurrencyIndicator);
 			}

@@ -1,6 +1,5 @@
 using System;
 using _src.Scripts.Data;
-using AwesomeAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,9 +11,10 @@ namespace _src.Scripts.CoreFeatures
 	{
 		public CurrencyType CurrencyType;
 
-
-		[Preview]
+		
 		public Sprite CurrencyIcon;
+
+		public Sprite CurrencyButtonSprite;
 
 
 		public int Value => _value;

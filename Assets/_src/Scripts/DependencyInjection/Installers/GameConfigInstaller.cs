@@ -1,16 +1,24 @@
 using _src.Scripts.Data;
+using _src.Scripts.UI.Core;
+using UnityEngine;
 using Zenject;
 
 
 namespace _src.Scripts.DependencyInjection.Installers
 {
-	public class GameConfigInstaller : ScriptableObjectInstaller
+	[CreateAssetMenu(menuName = "GameData/Zenject/Game Settings Installer")]
+	public class GameConfigInstaller : ScriptableObjectInstaller<GameConfigInstaller>
 	{
 		public GameConfig GameConfig;
+		public UiController UiController;
 		
 		public override void InstallBindings()
 		{
 			Container.BindInstances(GameConfig);
+			Container
+				.Bind<UiController>()
+				.FromComponentInNewPrefab(UiController)
+				.AsSingle();
 		}
 	}
 }

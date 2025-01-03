@@ -2,7 +2,7 @@ using _src.Scripts.Data;
 using _src.Scripts.UI.Core;
 using _src.Scripts.UI.CurrenciesButtons;
 using _src.Scripts.UI.UIElements.CurrenciesIndicators;
-using AwesomeAttributes;
+using TetraCreations.Attributes;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -38,6 +38,7 @@ namespace _src.Scripts.UI
             _currencyButtonsCollection = new CurrencyButtonsCollection(_gridLayoutGroupButtons, _currencyButtonUIPrefab, _gameConfig);
             _currencyButtonsCollection.CreateButtons();
             _currencyIndicatorsCollection = new CurrencyIndicatorsCollection(_horizontalLayoutGroupIndicators, _currencyIndicatorPrefab, _currencyButtonsCollection.Buttons);
+            _currencyIndicatorsCollection.CreateIndicators();
             base.Awake();
             
         }

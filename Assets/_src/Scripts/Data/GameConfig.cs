@@ -1,4 +1,4 @@
-using AwesomeAttributes;
+using TetraCreations.Attributes;
 using UnityEngine;
 
 

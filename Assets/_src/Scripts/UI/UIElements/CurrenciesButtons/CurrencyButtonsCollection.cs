@@ -37,7 +37,7 @@ namespace _src.Scripts.UI.CurrenciesButtons
 			{
 				var newCurrencyButton = GameObject.Instantiate(_currencyButtonUIPrefab, _gridLayoutGroupButtons.transform);
 				newCurrencyButton.gameObject.name = $"{gameCurrency.CurrencyType.ToString()} UIButton";
-				newCurrencyButton.InitializeFields(gameCurrency.CurrencyIcon, gameCurrency.CurrencyType);
+				newCurrencyButton.InitializeFields(gameCurrency.CurrencyIcon,gameCurrency.CurrencyButtonSprite , gameCurrency.CurrencyType);
 				_buttons.Add(gameCurrency.CurrencyType, newCurrencyButton);
 			}
 		}

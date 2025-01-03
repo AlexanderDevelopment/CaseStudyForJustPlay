@@ -1,5 +1,5 @@
-using AwesomeAttributes;
 using MoreMountains.Feedbacks;
+using TetraCreations.Attributes;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;

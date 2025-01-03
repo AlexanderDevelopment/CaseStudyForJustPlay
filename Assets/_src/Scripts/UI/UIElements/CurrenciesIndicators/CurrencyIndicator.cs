@@ -1,6 +1,6 @@
 using _src.Scripts.Data;
-using AwesomeAttributes;
 using MoreMountains.Feedbacks;
+using TetraCreations.Attributes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
