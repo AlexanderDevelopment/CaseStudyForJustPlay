@@ -17,6 +17,9 @@ namespace _src.Scripts.UI.UIElements
 		protected Button _button;
 
 
+		public Button ButtonComponent => _button;
+
+
 		public UnityEvent<UIButton> OnButtonClick = new();
 
 

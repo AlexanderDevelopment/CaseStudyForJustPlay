@@ -1,3 +1,4 @@
+using _src.Scripts.CoreFeatures.CharacterMiner;
 using _src.Scripts.Data;
 using _src.Scripts.UI.Core;
 using UnityEngine;
@@ -18,6 +19,9 @@ namespace _src.Scripts.DependencyInjection.Installers
 			Container
 				.Bind<UiController>()
 				.FromComponentInNewPrefab(UiController)
+				.AsSingle();
+			Container.Bind<IMinerCommander>()
+				.FromComponentInHierarchy()
 				.AsSingle();
 		}
 	}
