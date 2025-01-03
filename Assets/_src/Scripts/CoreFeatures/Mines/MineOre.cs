@@ -14,5 +14,9 @@ namespace _src.Scripts.CoreFeatures
 		public MMF_Player ShowMine;
 		[Required]
 		public MMF_Player HideMine;
+
+
+		[Required]
+		public MMF_Player PickAxeHit;
 	}
 }

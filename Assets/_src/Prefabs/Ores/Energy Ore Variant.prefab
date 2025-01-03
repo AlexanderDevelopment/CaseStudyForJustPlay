@@ -8,17 +8,65 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 182966606761602588, guid: 385daea10880ef943b9586c8d87be9a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 84eda01cf3c9bbb4086f5de7748ddc11, type: 2}
+    - target: {fileID: 418476805262888063, guid: 385daea10880ef943b9586c8d87be9a7, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.9806142
+      objectReference: {fileID: 0}
+    - target: {fileID: 418476805262888063, guid: 385daea10880ef943b9586c8d87be9a7, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 418476805262888063, guid: 385daea10880ef943b9586c8d87be9a7, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1055628236935006709, guid: 385daea10880ef943b9586c8d87be9a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 84eda01cf3c9bbb4086f5de7748ddc11, type: 2}
+    - target: {fileID: 1502087578841286761, guid: 385daea10880ef943b9586c8d87be9a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 84eda01cf3c9bbb4086f5de7748ddc11, type: 2}
     - target: {fileID: 3322371546207271641, guid: 385daea10880ef943b9586c8d87be9a7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d30bd1e76de82384ebd705b0d96eee10, type: 2}
+    - target: {fileID: 3701826182176492313, guid: 385daea10880ef943b9586c8d87be9a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 84eda01cf3c9bbb4086f5de7748ddc11, type: 2}
+    - target: {fileID: 4717846202863082143, guid: 385daea10880ef943b9586c8d87be9a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 84eda01cf3c9bbb4086f5de7748ddc11, type: 2}
+    - target: {fileID: 8320193139049687226, guid: 385daea10880ef943b9586c8d87be9a7, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8320193139049687226, guid: 385daea10880ef943b9586c8d87be9a7, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.95917225
+      objectReference: {fileID: 0}
+    - target: {fileID: 8320193139049687226, guid: 385daea10880ef943b9586c8d87be9a7, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8320193139049687226, guid: 385daea10880ef943b9586c8d87be9a7, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8415276642920791672, guid: 385daea10880ef943b9586c8d87be9a7, type: 3}
       propertyPath: m_Name
       value: Energy Ore Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8686717721187271393, guid: 385daea10880ef943b9586c8d87be9a7, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8686717721187271393, guid: 385daea10880ef943b9586c8d87be9a7, type: 3}
       propertyPath: m_LocalPosition.x
