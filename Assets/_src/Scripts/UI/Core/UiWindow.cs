@@ -1,4 +1,6 @@
 using UnityEngine;
+using Zenject;
+
 
 namespace _src.Scripts.UI.Core
 {
@@ -6,6 +8,10 @@ namespace _src.Scripts.UI.Core
     {
         [SerializeField]
         protected GameObject _content;
+
+
+        [Inject]
+        protected UiController _uiController;
         
         protected enum State : byte
         {
@@ -16,19 +22,19 @@ namespace _src.Scripts.UI.Core
 
         protected State _state = State.None;
 
-        protected void Awake()
+        protected virtual void Awake()
         {
             Hide();
         }
 
         protected void OnEnable()
         {
-            UiController.AddWindow(this); 
+            _uiController.UIWindowsCollection.AddWindow(this); 
         }
 
         protected void OnDisable()
         {
-            UiController.RemoveWindow(this);
+            _uiController.UIWindowsCollection.RemoveWindow(this);
         }
 
         public void Show()
