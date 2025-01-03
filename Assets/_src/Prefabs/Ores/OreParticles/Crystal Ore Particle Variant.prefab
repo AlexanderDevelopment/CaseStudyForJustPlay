@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crystal Ore Particle Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3145837221228045477, guid: 4495eedde64832749bc7572f67387b58, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 10206cb5061f1b34690b2f4173a82368, type: 2}
     - target: {fileID: 6681006207750308967, guid: 4495eedde64832749bc7572f67387b58, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

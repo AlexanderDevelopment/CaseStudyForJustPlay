@@ -13,6 +13,10 @@ namespace _src.Scripts.CoreFeatures
 		
 		public Sprite CurrencyIcon;
 
+		public Color TextColor = Color.white;
+
+		public AudioClip CollectSound;
+
 		public Sprite CurrencyButtonSprite;
 
 

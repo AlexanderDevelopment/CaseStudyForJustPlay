@@ -57,14 +57,9 @@ namespace _src.Scripts.UI
 			RoutineWork.InitializeComponentFromChildren(gameObject, ref _canvas);
 			_currencyButtonsCollection = new CurrencyButtonsCollection(_gridLayoutGroupButtons, _currencyButtonUIPrefab, _gameConfig);
 			_currencyButtonsCollection.CreateButtons(_factory);
-			_currencyIndicatorsCollection = new CurrencyIndicatorsCollection(_horizontalLayoutGroupIndicators, _currencyIndicatorPrefab, _currencyButtonsCollection.Buttons);
-			_currencyIndicatorsCollection.CreateIndicators();
+			_currencyIndicatorsCollection = new CurrencyIndicatorsCollection(_horizontalLayoutGroupIndicators, _currencyIndicatorPrefab, _currencyButtonsCollection.Buttons, _gameConfig);
+			_currencyIndicatorsCollection.CreateIndicators(_factory);
 			base.Awake();
-		}
-
-
-		private void IndicatorsSync()
-		{
 		}
 	}
 }

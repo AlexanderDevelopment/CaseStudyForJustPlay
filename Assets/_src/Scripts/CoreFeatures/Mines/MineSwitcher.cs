@@ -4,6 +4,7 @@ using _src.Scripts.Data;
 using AYellowpaper.SerializedCollections;
 using TetraCreations.Attributes;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 
 namespace _src.Scripts.CoreFeatures
@@ -29,7 +30,7 @@ namespace _src.Scripts.CoreFeatures
 				return;
 
 			_activeOre.HideMine.PlayFeedbacks();
-			_mineOres[mineOreType].ShowMine.PlayFeedbacks();
+			_mineOres[mineOreType].ShowMine[Random.Range(0, _mineOres[mineOreType].ShowMine.Length)].PlayFeedbacks();
 			_activeOre = _mineOres[mineOreType];
 		}
 	}

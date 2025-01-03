@@ -30,7 +30,8 @@ namespace _src.Scripts.CoreFeatures
 
 
 		[SerializeField]
-		private float _attractionDuration = 5f;
+		[MinMaxSlider(0, 2)]
+		private Vector2 _attractionDuration;
 
 
 		[SerializeField]
@@ -136,7 +137,8 @@ namespace _src.Scripts.CoreFeatures
 				OreSprite oreSprite = GetSpriteFromPool();
 				var initialPosition = ConvertWorldCoordinatesToCanvas(oreParticleWorldPosition);
 				var targetIndicatorPosition = _uiController.GameHudWindow.CurrencyIndicatorsCollection.Indicators[spriteType].transform.GetComponent<RectTransform>();
-				oreSprite.Initialize(this, _movementCurve, _attractionDuration, initialPosition, targetIndicatorPosition, spriteType);
+				var randomAttractionSpeed = Random.Range(_attractionDuration.x, _attractionDuration.y);
+				oreSprite.Initialize(this, _movementCurve, randomAttractionSpeed, initialPosition, targetIndicatorPosition, spriteType);
 				oreSprite.gameObject.SetActive(true);
 				oreSprite.MoveToTarget().Forget();
 			}
@@ -215,7 +217,9 @@ namespace _src.Scripts.CoreFeatures
 		private OreSprite CreateNewOreSprite()
 		{
 			var canvas = _uiController.GameHudWindow.Canvas.transform;
-			OreSprite newOreSprite = Instantiate(_oreSpritePrefab2D, canvas);
+			var newOreSpriteGameObject = _factory.Create(_oreSpritePrefab2D.gameObject);
+			newOreSpriteGameObject.transform.SetParent(canvas);
+			var newOreSprite = newOreSpriteGameObject.GetComponent<OreSprite>();
 			newOreSprite.gameObject.SetActive(false);
 
 			return newOreSprite;

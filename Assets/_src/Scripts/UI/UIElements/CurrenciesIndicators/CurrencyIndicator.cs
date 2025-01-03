@@ -1,4 +1,7 @@
+using System;
+using System.Collections.Generic;
 using _src.Scripts.Data;
+using _src.Scripts.Utils;
 using MoreMountains.Feedbacks;
 using TetraCreations.Attributes;
 using TMPro;
@@ -11,7 +14,18 @@ namespace _src.Scripts.UI.UIElements.CurrenciesIndicators
 	public class CurrencyIndicator : MonoBehaviour
 	{
 		[SerializeField, Required]
-		private TextMeshProUGUI _value;
+		private TextMeshProUGUI _textMeshProUGUI;
+
+
+		public TextMeshProUGUI TextMeshProUGUI => _textMeshProUGUI;
+
+		[SerializeField,Required]
+		private ParticleSystem _glowParticles;
+		
+		[SerializeField, Required]
+		private MMF_Player _changeCurrencyValueFeedbacks;
+
+		private int _currentValue;
 
 
 		[SerializeField]
@@ -24,24 +38,30 @@ namespace _src.Scripts.UI.UIElements.CurrenciesIndicators
 		private Image _icon;
 
 
-		[SerializeField, Required]
-		private MMF_Player _changeCurrencyValueFeedbacks;
-
-
-		public void Initialize(int value, Sprite icon, CurrencyType currencyType)
+		public void Initialize(int value, Sprite icon, CurrencyType currencyType, Color textColor, AudioClip clip)
 		{
-			_value.text = value.ToString();
+			_textMeshProUGUI.text = value.ToString();
 			_icon.sprite = icon;
 			_currencyType = currencyType;
+			_currentValue = 0;
+			SetValueText(_currentValue.ToString());
+			var main = _glowParticles.main;
+			main.startColor = textColor;
+			_textMeshProUGUI.color = textColor;
+			_changeCurrencyValueFeedbacks.GetFeedbackOfType<MMF_Sound>().Sfx = clip;
 		}
 
 
-		public void SetValueText(string value)
+		public void AddValue(int value)
 		{
-			_value.text = value;
+			_currentValue += value;
+			SetValueText(_currentValue.ToString());
+			_changeCurrencyValueFeedbacks.PlayFeedbacks();
+		}
 
-			if (_changeCurrencyValueFeedbacks)
-				_changeCurrencyValueFeedbacks.PlayFeedbacks();
+		private void SetValueText(string value)
+		{
+			_textMeshProUGUI.text = value;
 		}
 	}
 }

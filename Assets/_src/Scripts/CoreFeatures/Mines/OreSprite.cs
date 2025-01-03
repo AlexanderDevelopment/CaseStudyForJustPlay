@@ -29,7 +29,8 @@ namespace _src.Scripts.CoreFeatures
 		private ParticleSpawner _spawner;
 		private Vector3 _initialPosition;
 
-
+		private CurrencyType _currencyType;
+			
 		[Inject]
 		private MessageBus _messageBus;
 
@@ -48,6 +49,7 @@ namespace _src.Scripts.CoreFeatures
 			_initialPosition = initialPosition;
 			_attractionDuration = attractionDuration;
 			_target = target;
+			_currencyType = currencyType;
 			_image.sprite = _currencySprites[currencyType];
 		}
 
@@ -56,12 +58,12 @@ namespace _src.Scripts.CoreFeatures
 		{
 			_rectTransform.anchoredPosition = _initialPosition;
 			
-			Tweener tweener = _rectTransform.DOMove(_target.position, _attractionDuration).SetEase(_movementCurve);
+			var tweener = _rectTransform.DOMove(_target.position, _attractionDuration).SetEase(_movementCurve);
 			
 			var timeoutTask = UniTask.Delay(TimeSpan.FromSeconds(_attractionDuration + 0.5f));
 			var animationTask = tweener.AsyncWaitForCompletion().AsUniTask();
 			await UniTask.WhenAny(animationTask, timeoutTask);
-
+			_messageBus.Invoke(BusMessages.OnOreCollected, new OreCollectedSignal(_currencyType));
 			_spawner.ReturnToSpritePool(this);
 		}
 

@@ -15,7 +15,9 @@ namespace _src.Scripts.DependencyInjection.Factories
 
 		public GameObject Create(GameObject prefab)
 		{
-			return _container.InstantiatePrefab(prefab);
+			var instance = _container.InstantiatePrefab(prefab);
+			_container.Inject(instance);
+			return instance;
 		}
 	}
 }

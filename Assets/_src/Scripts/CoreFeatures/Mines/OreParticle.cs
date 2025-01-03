@@ -5,6 +5,8 @@ using _src.Scripts.UI.Core;
 using _src.Scripts.Utils;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using MoreMountains.Feedbacks;
+using TetraCreations.Attributes;
 using Unity.Collections;
 using UnityEngine;
 using Zenject;
@@ -17,12 +19,15 @@ namespace _src.Scripts.CoreFeatures
 	{
 		public CurrencyType OreType;
 
+
+		[SerializeField, Required]
+		private MMF_Player ReturnToPoolFeedbacks;
+
 		private Material _material;
-		public float _lifetime = 5f;
+		private float _lifetime;
 		private ParticleSpawner _spawner;
 
 		private Rigidbody _rigidbody;
-		private Renderer _renderer;
 
 		[Inject]
 		private MessageBus _messageBus;
@@ -30,20 +35,14 @@ namespace _src.Scripts.CoreFeatures
 		private void Awake()
 		{
 			RoutineWork.InitializeComponentFromGameObject(gameObject, ref _rigidbody);
-			RoutineWork.InitializeComponentFromGameObject(gameObject, ref _renderer);
-			_material = _renderer.materials[0];
 		}
 
-		private void OnDisable()
-		{
-			_material.SetFloat("_EmissionIntensity", 0);
-		}
+	
 
 		public void Initialize(ParticleSpawner spawner,float lifeTime)
 		{
 			_lifetime = lifeTime;
 			_spawner = spawner;
-			_material.SetFloat("_EmissionIntensity", 0);
 		}
 		
 		public void SetForce(Vector3 force)
@@ -54,6 +53,7 @@ namespace _src.Scripts.CoreFeatures
 
 		public async UniTask PlayLifeTimeAndReturnToPool()
 		{
+			ReturnToPoolFeedbacks.PlayFeedbacks();
 			await UniTask.Delay(TimeSpan.FromSeconds(_lifetime));
 			_spawner.ReturnToPool(this);
 		}

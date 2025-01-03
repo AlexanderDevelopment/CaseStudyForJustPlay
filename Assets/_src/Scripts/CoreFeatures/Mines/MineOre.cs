@@ -11,7 +11,7 @@ namespace _src.Scripts.CoreFeatures
 		public CurrencyType OreType;
 		
 		[Required]
-		public MMF_Player ShowMine;
+		public MMF_Player[] ShowMine;
 		[Required]
 		public MMF_Player HideMine;
 
