@@ -1,3 +1,4 @@
+using _src.Scripts.CoreFeatures;
 using _src.Scripts.CoreFeatures.CharacterMiner;
 using _src.Scripts.Data;
 using _src.Scripts.UI.Core;
@@ -21,6 +22,9 @@ namespace _src.Scripts.DependencyInjection.Installers
 				.FromComponentInNewPrefab(UiController)
 				.AsSingle();
 			Container.Bind<IMinerCommander>()
+				.FromComponentInHierarchy()
+				.AsSingle();
+			Container.Bind<IMineSwitcher>()
 				.FromComponentInHierarchy()
 				.AsSingle();
 		}

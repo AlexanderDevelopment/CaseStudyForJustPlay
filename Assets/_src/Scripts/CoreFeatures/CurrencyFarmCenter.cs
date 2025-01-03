@@ -19,10 +19,14 @@ namespace _src.Scripts.CoreFeatures
 
 		[Inject]
 		private UiController _uiController;
-		
+
+
 		[Inject]
 		private IMinerCommander _minerCommander;
-		
+
+
+		[Inject]
+		private IMineSwitcher _mineSwitcher;
 
 
 		private bool _minerCharacterIsBusy;
@@ -49,13 +53,14 @@ namespace _src.Scripts.CoreFeatures
 
 			if (currencyButtonUI is CurrencyButtonUI currencyButton)
 			{
-				MineAsync().Forget();
+				MineAsync(currencyButton.CurrencyType).Forget();
 			}
 		}
 
 
-		private async UniTask MineAsync()
+		private async UniTask MineAsync(CurrencyType currencyType)
 		{
+			_mineSwitcher.SwitchMine(currencyType);
 			_minerCharacterIsBusy = true;
 			HandleUIButtonsInteractable(false);
 			await _minerCommander.CommandToMine();
