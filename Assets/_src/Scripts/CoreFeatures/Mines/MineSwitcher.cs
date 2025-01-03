@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using _src.Scripts.Data;
 using AYellowpaper.SerializedCollections;
+using TetraCreations.Attributes;
 using UnityEngine;
 
 
@@ -11,7 +12,8 @@ namespace _src.Scripts.CoreFeatures
 	{
 		[SerializeField]
 		private SerializedDictionary<CurrencyType, MineOre> _mineOres = new();
-		
+
+		[SerializeField,ReadOnly]
 		private MineOre _activeOre;
 
 
@@ -23,10 +25,12 @@ namespace _src.Scripts.CoreFeatures
 
 		public void SwitchMine(CurrencyType mineOreType)
 		{
+			if (_activeOre.OreType == mineOreType)
+				return;
+
 			_activeOre.HideMine.PlayFeedbacks();
 			_mineOres[mineOreType].ShowMine.PlayFeedbacks();
 			_activeOre = _mineOres[mineOreType];
 		}
-		
 	}
 }

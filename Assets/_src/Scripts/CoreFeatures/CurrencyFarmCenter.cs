@@ -29,9 +29,6 @@ namespace _src.Scripts.CoreFeatures
 		private IMineSwitcher _mineSwitcher;
 
 
-		private bool _minerCharacterIsBusy;
-
-
 		private void Start()
 		{
 			foreach (var button in _uiController.GameHudWindow.CurrencyButtonsCollection.Buttons.Values)
@@ -44,13 +41,6 @@ namespace _src.Scripts.CoreFeatures
 
 		private void ButtonClickHandle(UIButton currencyButtonUI)
 		{
-			if (_minerCharacterIsBusy)
-			{
-				Debug.LogWarning("Miner is still playing last animation");
-
-				return;
-			}
-
 			if (currencyButtonUI is CurrencyButtonUI currencyButton)
 			{
 				MineAsync(currencyButton.CurrencyType).Forget();
@@ -61,11 +51,9 @@ namespace _src.Scripts.CoreFeatures
 		private async UniTask MineAsync(CurrencyType currencyType)
 		{
 			_mineSwitcher.SwitchMine(currencyType);
-			_minerCharacterIsBusy = true;
 			HandleUIButtonsInteractable(false);
 			await _minerCommander.CommandToMine();
 			HandleUIButtonsInteractable(true);
-			_minerCharacterIsBusy = false;
 		}
 
 
