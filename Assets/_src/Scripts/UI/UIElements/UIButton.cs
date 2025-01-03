@@ -22,13 +22,21 @@ namespace _src.Scripts.UI.UIElements
 
 		protected void Start()
 		{
-			_button.onClick.AddListener(() => OnButtonClick.Invoke());
+			_button.onClick.AddListener(Click);
 		}
 
 
 		protected void OnDestroy()
 		{
-			_button.onClick.RemoveListener(() => OnButtonClick.Invoke());
+			_button.onClick.RemoveListener(Click);
+		}
+
+
+		private void Click()
+		{
+			OnButtonClick.Invoke();
+			if (ClickFeedbacks)
+				ClickFeedbacks.PlayFeedbacks();
 		}
 	}
 }

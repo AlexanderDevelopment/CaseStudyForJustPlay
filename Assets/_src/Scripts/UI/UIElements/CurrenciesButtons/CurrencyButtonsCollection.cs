@@ -8,8 +8,8 @@ namespace _src.Scripts.UI.CurrenciesButtons
 {
 	public class CurrencyButtonsCollection
 	{
-		private GridLayoutGroup _verticalLayoutGroup;
-
+		private GridLayoutGroup _gridLayoutGroupButtons;
+		
 		
 		private CurrencyButtonUI _currencyButtonUIPrefab;
 		
@@ -20,9 +20,12 @@ namespace _src.Scripts.UI.CurrenciesButtons
 		private Dictionary<CurrencyType,CurrencyButtonUI> _buttons = new();
 
 
-		public CurrencyButtonsCollection(GridLayoutGroup verticalLayoutGroup, CurrencyButtonUI currencyButtonUIPrefab, GameConfig gameConfig)
+		public Dictionary<CurrencyType, CurrencyButtonUI> Buttons => _buttons;
+
+
+		public CurrencyButtonsCollection(GridLayoutGroup gridLayoutGroupButtons, CurrencyButtonUI currencyButtonUIPrefab, GameConfig gameConfig)
 		{
-			_verticalLayoutGroup = verticalLayoutGroup;
+			_gridLayoutGroupButtons = gridLayoutGroupButtons;
 			_currencyButtonUIPrefab = currencyButtonUIPrefab;
 			_gameConfig = gameConfig;
 		}
@@ -32,11 +35,12 @@ namespace _src.Scripts.UI.CurrenciesButtons
 		{
 			foreach (var gameCurrency in _gameConfig.CurrenciesData.GameCurrencies.Values)
 			{
-				var newCurrencyButton = GameObject.Instantiate(_currencyButtonUIPrefab, _verticalLayoutGroup.transform);
+				var newCurrencyButton = GameObject.Instantiate(_currencyButtonUIPrefab, _gridLayoutGroupButtons.transform);
 				newCurrencyButton.gameObject.name = $"{gameCurrency.CurrencyType.ToString()} UIButton";
-				newCurrencyButton.InitializeFields(gameCurrency.CurrencyIcon, gameCurrency.CurrencyType.ToString(), gameCurrency.Value);
+				newCurrencyButton.InitializeFields(gameCurrency.CurrencyIcon, gameCurrency.CurrencyType);
 				_buttons.Add(gameCurrency.CurrencyType, newCurrencyButton);
 			}
 		}
+		
 	}
 }
