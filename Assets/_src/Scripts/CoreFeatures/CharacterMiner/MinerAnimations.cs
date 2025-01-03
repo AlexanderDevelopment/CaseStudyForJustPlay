@@ -40,7 +40,7 @@ namespace _src.Scripts.CoreFeatures.CharacterMiner
 		public void PlayHitPickaxeFeedbacks()
 		{
 			var results = new Collider[10];
-			Physics.OverlapSphereNonAlloc(_mineOreDetector.position, 1, results);
+			Physics.OverlapSphereNonAlloc(_mineOreDetector.position, 2, results);
 
 			if (results.Length > 0)
 			{

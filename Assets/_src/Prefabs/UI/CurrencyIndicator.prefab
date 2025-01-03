@@ -5743,7 +5743,7 @@ MonoBehaviour:
         CachedRecycle: 1
         ParticlesPrefab: {fileID: 2080414142416722483, guid: de698707e49f0274ea6bd1cde02f2699, type: 3}
         RandomParticlePrefabs: []
-        ForceSetActiveOnPlay: 0
+        ForceSetActiveOnPlay: 1
         StopOnReset: 0
         DeclaredDuration: 0
         PositionMode: 0
