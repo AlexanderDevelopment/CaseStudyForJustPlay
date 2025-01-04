@@ -8,5 +8,8 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Plugins/AwesomeAttributes/Samples/DemoScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/_src/Scenes/Core.unity
+    guid: 484c04fda7a778c418068162460ae13e
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 34f4a28070faa5b4ab3baa5626f7e622, type: 2}

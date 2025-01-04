@@ -15,6 +15,8 @@ namespace _src.Scripts.DependencyInjection.Installers
 		public GameConfig GameConfig;
 		public UiController UiController;
 		
+		
+		//TODO Separate to different installers, install from references
 		public override void InstallBindings()
 		{
 			Container.Bind<MessageBus>().FromComponentInHierarchy()
@@ -26,6 +28,9 @@ namespace _src.Scripts.DependencyInjection.Installers
 			Container
 				.Bind<UiController>()
 				.FromComponentInNewPrefab(UiController)
+				.AsSingle();
+			Container.Bind<IMinerEntity>()
+				.FromComponentInHierarchy()
 				.AsSingle();
 			Container.Bind<IMinerCommander>()
 				.FromComponentInHierarchy()

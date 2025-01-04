@@ -28,6 +28,9 @@ namespace _src.Scripts.UI.UIElements.CurrenciesIndicators
 		private int _currentValue;
 
 
+		public int CurrentValue => _currentValue;
+
+
 		[SerializeField]
 		private CurrencyType _currencyType;
 		

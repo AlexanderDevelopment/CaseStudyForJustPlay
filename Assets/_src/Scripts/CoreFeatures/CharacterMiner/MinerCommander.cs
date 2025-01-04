@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using _src.Scripts.Utils;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -20,6 +21,15 @@ namespace _src.Scripts.CoreFeatures.CharacterMiner
 		public async UniTask CommandToMine()
 		{
 			await _minerAnimations.PlayMineAnimationAsync();
+		}
+
+
+		public async UniTask CommandToChangeAnimationsSpeed(float animationSpeed, float duration, CancellationToken ct)
+		{
+			var cachedAnimatorSpeed = _minerAnimations.MinerAnimator.speed;
+			_minerAnimations.MinerAnimator.speed = animationSpeed;
+			await UniTask.Delay(TimeSpan.FromSeconds(duration), cancellationToken: ct);
+			_minerAnimations.MinerAnimator.speed = cachedAnimatorSpeed;
 		}
 	}
 }

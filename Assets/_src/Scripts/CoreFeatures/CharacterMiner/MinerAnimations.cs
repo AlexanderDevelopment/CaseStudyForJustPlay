@@ -11,6 +11,7 @@ namespace _src.Scripts.CoreFeatures.CharacterMiner
 	{
 		private Animator _animator;
 		
+		public Animator MinerAnimator => _animator;
 
 		[SerializeField, Required]
 		private Transform _mineOreDetector;
@@ -36,11 +37,11 @@ namespace _src.Scripts.CoreFeatures.CharacterMiner
 				&& !_animator.IsInTransition(0));
 		}
 
-
+		//Invoking in animator
 		public void PlayHitPickaxeFeedbacks()
 		{
 			var results = new Collider[10];
-			Physics.OverlapSphereNonAlloc(_mineOreDetector.position, 2, results);
+			Physics.OverlapSphereNonAlloc(_mineOreDetector.position, 1.5f, results);
 
 			if (results.Length > 0)
 			{
