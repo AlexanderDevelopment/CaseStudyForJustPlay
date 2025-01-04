@@ -1786,7 +1786,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _lifetime: 4
-  _attractionDuration: {x: 0.5571227, y: 2}
+  _attractionSpeed: {x: 500, y: 3000}
   MinMaxSliderForce: {x: 0.1, y: 0.62633455}
   _initialScale: 0.08
   _poolSize: 30
