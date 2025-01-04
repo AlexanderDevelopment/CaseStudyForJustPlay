@@ -9,7 +9,8 @@ namespace _src.Scripts.Data
 	{
 		[SerializeField, Required]
 		private CurrenciesData _currenciesData;
-		
+
+
 		public CurrenciesData CurrenciesData => _currenciesData;
 	}
 }

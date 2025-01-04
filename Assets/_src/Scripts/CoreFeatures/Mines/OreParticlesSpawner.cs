@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _src.Scripts.CoreFeatures.EventBus;
 using _src.Scripts.Data;
 using _src.Scripts.UI.Core;
 using AYellowpaper.SerializedCollections;
@@ -9,9 +10,9 @@ using Zenject;
 using Random = UnityEngine.Random;
 
 
-namespace _src.Scripts.CoreFeatures
+namespace _src.Scripts.CoreFeatures.Mines
 {
-	public class ParticleSpawner : MonoBehaviour
+	public class OreParticlesSpawner : MonoBehaviour
 	{
 		[SerializeField]
 		private SerializedDictionary<CurrencyType, OreParticle> _oreParticles = new();
@@ -19,10 +20,6 @@ namespace _src.Scripts.CoreFeatures
 
 		[SerializeField]
 		private OreSprite _oreSpritePrefab2D;
-
-
-		[SerializeField]
-		private AnimationCurve _movementCurve;
 
 
 		[SerializeField]
@@ -138,7 +135,7 @@ namespace _src.Scripts.CoreFeatures
 				var initialPosition = ConvertWorldCoordinatesToCanvas(oreParticleWorldPosition);
 				var targetIndicatorPosition = _uiController.GameHudWindow.CurrencyIndicatorsCollection.Indicators[spriteType].transform.GetComponent<RectTransform>();
 				var randomAttractionSpeed = Random.Range(_attractionSpeed.x, _attractionSpeed.y);
-				oreSprite.Initialize(this, _movementCurve, randomAttractionSpeed, initialPosition, targetIndicatorPosition, spriteType);
+				oreSprite.Initialize(this, randomAttractionSpeed, initialPosition, targetIndicatorPosition, spriteType);
 				oreSprite.gameObject.SetActive(true);
 				oreSprite.StartMove();
 			}
@@ -149,20 +146,14 @@ namespace _src.Scripts.CoreFeatures
 		{
 			Vector2 viewportPosition = Camera.main.WorldToViewportPoint(worldPosition);
 			var canvas = _uiController.GameHudWindow.Canvas.GetComponent<RectTransform>();
-			
-			Vector2 worldObjectScreenPosition = new Vector2(
-				viewportPosition.x * canvas.sizeDelta.x - canvas.sizeDelta.x * 0.5f, 
-				viewportPosition.y * canvas.sizeDelta.y - canvas.sizeDelta.y * 0.5f
-			);
-			
-			Vector2 scaledPosition = new Vector2(
-				worldObjectScreenPosition.x / canvas.localScale.x, 
-				worldObjectScreenPosition.y / canvas.localScale.y
-			);
+
+			Vector2 worldObjectScreenPosition = new Vector2(viewportPosition.x * canvas.sizeDelta.x - canvas.sizeDelta.x * 0.5f, viewportPosition.y * canvas.sizeDelta.y - canvas.sizeDelta.y * 0.5f);
+
+			Vector2 scaledPosition = new Vector2(worldObjectScreenPosition.x / canvas.localScale.x, worldObjectScreenPosition.y / canvas.localScale.y);
 
 			return scaledPosition;
 		}
-		
+
 
 
 		public void ReturnToSpritePool(OreSprite oreSprite)

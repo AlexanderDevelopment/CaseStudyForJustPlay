@@ -1,5 +1,5 @@
-using _src.Scripts.CoreFeatures;
-using _src.Scripts.Utils;
+using _src.Scripts.CoreFeatures.EventBus;
+using _src.Scripts.Tools;
 using UnityEngine;
 using Zenject;
 
@@ -13,6 +13,7 @@ namespace _src.Scripts.UI.UIElements.CurrenciesIndicators
 
 		[Inject]
 		private MessageBus _messageBus;
+
 
 		private void Awake()
 		{

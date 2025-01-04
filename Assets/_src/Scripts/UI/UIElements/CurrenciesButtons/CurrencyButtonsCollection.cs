@@ -5,20 +5,20 @@ using UnityEngine.UI;
 using Zenject;
 
 
-namespace _src.Scripts.UI.CurrenciesButtons
+namespace _src.Scripts.UI.UIElements.CurrenciesButtons
 {
 	public class CurrencyButtonsCollection
 	{
 		private GridLayoutGroup _gridLayoutGroupButtons;
-		
-		
+
+
 		private CurrencyButtonUI _currencyButtonUIPrefab;
-		
-		
+
+
 		private readonly GameConfig _gameConfig;
 
 
-		private Dictionary<CurrencyType,CurrencyButtonUI> _buttons = new();
+		private Dictionary<CurrencyType, CurrencyButtonUI> _buttons = new();
 
 
 		public Dictionary<CurrencyType, CurrencyButtonUI> Buttons => _buttons;
@@ -36,14 +36,13 @@ namespace _src.Scripts.UI.CurrenciesButtons
 		{
 			foreach (var gameCurrency in _gameConfig.CurrenciesData.GameCurrencies.Values)
 			{
-				var newCurrencyButtonGameObject =  factory.Create(_currencyButtonUIPrefab.gameObject);
+				var newCurrencyButtonGameObject = factory.Create(_currencyButtonUIPrefab.gameObject);
 				var newCurrencyButton = newCurrencyButtonGameObject.GetComponent<CurrencyButtonUI>();
 				newCurrencyButton.transform.SetParent(_gridLayoutGroupButtons.transform);
 				newCurrencyButton.gameObject.name = $"{gameCurrency.CurrencyType.ToString()} UIButton";
-				newCurrencyButton.InitializeFields(gameCurrency.CurrencyIcon,gameCurrency.CurrencyButtonSprite , gameCurrency.CurrencyType);
+				newCurrencyButton.InitializeFields(gameCurrency.CurrencyIcon, gameCurrency.CurrencyButtonSprite, gameCurrency.CurrencyType);
 				_buttons.Add(gameCurrency.CurrencyType, newCurrencyButton);
 			}
 		}
-		
 	}
 }

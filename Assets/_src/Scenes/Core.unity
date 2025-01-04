@@ -14554,39 +14554,6 @@ MonoBehaviour:
     - Key: 2
       Value: {fileID: 560295480860291849, guid: a46b6cd65456dca4e8256afeaf84291f, type: 3}
   _oreSpritePrefab2D: {fileID: 5478070772788012105, guid: ab893a845b4b73a419016fc83642536a, type: 3}
-  _movementCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.8755917
-      value: 0.40197057
-      inSlope: 1.1035603
-      outSlope: 1.1035603
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.7655571
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   _lifetime: 4
   _attractionSpeed: {x: 500, y: 3000}
   MinMaxSliderForce: {x: 0.1, y: 0.62633455}
@@ -20247,7 +20214,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1782702500598625160}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4e6ddb46e6d425f8ef85e3e800f99d0, type: 3}
+  m_Script: {fileID: 11500000, guid: d678060096ce407982138eb3e3bb3d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &4548762040879627334

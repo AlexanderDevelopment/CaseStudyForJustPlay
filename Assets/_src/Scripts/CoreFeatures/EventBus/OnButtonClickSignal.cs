@@ -1,7 +1,7 @@
 using _src.Scripts.UI.UIElements;
 
 
-namespace _src.Scripts.CoreFeatures
+namespace _src.Scripts.CoreFeatures.EventBus
 {
 	public struct OnButtonClickSignal
 	{

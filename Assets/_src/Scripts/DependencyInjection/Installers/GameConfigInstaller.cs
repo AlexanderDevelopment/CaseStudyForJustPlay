@@ -1,5 +1,6 @@
-using _src.Scripts.CoreFeatures;
 using _src.Scripts.CoreFeatures.CharacterMiner;
+using _src.Scripts.CoreFeatures.EventBus;
+using _src.Scripts.CoreFeatures.Mines;
 using _src.Scripts.Data;
 using _src.Scripts.DependencyInjection.Factories;
 using _src.Scripts.UI.Core;
@@ -14,30 +15,17 @@ namespace _src.Scripts.DependencyInjection.Installers
 	{
 		public GameConfig GameConfig;
 		public UiController UiController;
-		
-		
+
+
 		//TODO Separate to different installers, install from references
 		public override void InstallBindings()
 		{
-			Container.Bind<MessageBus>().FromComponentInHierarchy()
-				.AsSingle();
-			Container.Bind<IFactory<GameObject, GameObject>>()
-				.To<UniversalPrefabFactory>()
-				.AsTransient();
+			Container.Bind<MessageBus>().FromComponentInHierarchy().AsSingle();
+			Container.Bind<IFactory<GameObject, GameObject>>().To<UniversalPrefabFactory>().AsTransient();
 			Container.BindInstances(GameConfig);
-			Container
-				.Bind<UiController>()
-				.FromComponentInNewPrefab(UiController)
-				.AsSingle();
-			Container.Bind<IMinerEntity>()
-				.FromComponentInHierarchy()
-				.AsSingle();
-			Container.Bind<IMinerCommander>()
-				.FromComponentInHierarchy()
-				.AsSingle();
-			Container.Bind<IMineSwitcher>()
-				.FromComponentInHierarchy()
-				.AsSingle();
+			Container.Bind<UiController>().FromComponentInNewPrefab(UiController).AsSingle();
+			Container.Bind<IMineSwitcher>().FromComponentInHierarchy().AsSingle();
+			Container.Bind<IMinerEntity>().FromComponentInHierarchy().AsSingle();
 		}
 	}
 }

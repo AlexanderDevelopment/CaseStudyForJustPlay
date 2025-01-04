@@ -1,8 +1,7 @@
-using _src.Scripts.CoreFeatures;
+using _src.Scripts.CoreFeatures.EventBus;
 using MoreMountains.Feedbacks;
 using TetraCreations.Attributes;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 using Zenject;
 
@@ -21,10 +20,10 @@ namespace _src.Scripts.UI.UIElements
 
 		[Inject]
 		private MessageBus _messageBus;
-		
-		
+
+
 		public Button ButtonComponent => _button;
-		
+
 
 
 		protected void Start()
@@ -42,6 +41,7 @@ namespace _src.Scripts.UI.UIElements
 		private void Click()
 		{
 			_messageBus.Invoke(BusMessages.OnButtonClick, new OnButtonClickSignal(this));
+
 			if (ClickFeedbacks)
 				ClickFeedbacks.PlayFeedbacks();
 		}

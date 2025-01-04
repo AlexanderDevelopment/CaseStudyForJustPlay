@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using _src.Scripts.Data;
-using _src.Scripts.Utils;
 using MoreMountains.Feedbacks;
 using TetraCreations.Attributes;
 using TMPro;
@@ -19,11 +16,14 @@ namespace _src.Scripts.UI.UIElements.CurrenciesIndicators
 
 		public TextMeshProUGUI TextMeshProUGUI => _textMeshProUGUI;
 
-		[SerializeField,Required]
+
+		[SerializeField, Required]
 		private ParticleSystem _glowParticles;
-		
+
+
 		[SerializeField, Required]
 		private MMF_Player _changeCurrencyValueFeedbacks;
+
 
 		private int _currentValue;
 
@@ -33,7 +33,8 @@ namespace _src.Scripts.UI.UIElements.CurrenciesIndicators
 
 		[SerializeField]
 		private CurrencyType _currencyType;
-		
+
+
 		public CurrencyType CurrencyType => _currencyType;
 
 
@@ -61,6 +62,7 @@ namespace _src.Scripts.UI.UIElements.CurrenciesIndicators
 			SetValueText(_currentValue.ToString());
 			_changeCurrencyValueFeedbacks.PlayFeedbacks();
 		}
+
 
 		private void SetValueText(string value)
 		{

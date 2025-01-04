@@ -1,13 +1,15 @@
 using _src.Scripts.CoreFeatures.CharacterMiner;
+using _src.Scripts.CoreFeatures.EventBus;
+using _src.Scripts.CoreFeatures.Mines;
 using _src.Scripts.Data;
 using _src.Scripts.UI.Core;
-using _src.Scripts.UI.CurrenciesButtons;
+using _src.Scripts.UI.UIElements.CurrenciesButtons;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
 
-namespace _src.Scripts.CoreFeatures
+namespace _src.Scripts.GameState
 {
 	public class CurrencyFarmCenter : MonoBehaviour
 	{
@@ -20,7 +22,7 @@ namespace _src.Scripts.CoreFeatures
 
 
 		[Inject]
-		private IMinerCommander _minerCommander;
+		private IMinerEntity _minerEntity;
 
 
 		[Inject]
@@ -46,9 +48,7 @@ namespace _src.Scripts.CoreFeatures
 		private void ButtonClickHandle(object data)
 		{
 			if (data is OnButtonClickSignal onButtonClickSignal && onButtonClickSignal.Button is CurrencyButtonUI currencyButtonUI)
-			{
 				MineAsync(currencyButtonUI.CurrencyType).Forget();
-			}
 		}
 
 
@@ -56,7 +56,7 @@ namespace _src.Scripts.CoreFeatures
 		{
 			_mineSwitcher.SwitchMine(currencyType);
 			HandleUIButtonsInteractable(false);
-			await _minerCommander.CommandToMine();
+			await _minerEntity.MinerCommander.CommandToMine();
 			HandleUIButtonsInteractable(true);
 		}
 

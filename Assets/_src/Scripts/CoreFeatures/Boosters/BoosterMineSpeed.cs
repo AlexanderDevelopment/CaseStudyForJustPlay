@@ -1,12 +1,11 @@
 using System;
 using System.Linq;
 using System.Threading;
-using _src.Data.Boosters;
 using _src.Scripts.CoreFeatures.CharacterMiner;
+using _src.Scripts.Data.Boosters;
 using _src.Scripts.UI.Core;
 using Cysharp.Threading.Tasks;
 using MoreMountains.Feedbacks;
-using MoreMountains.FeedbacksForThirdParty;
 
 
 namespace _src.Scripts.CoreFeatures
@@ -23,10 +22,12 @@ namespace _src.Scripts.CoreFeatures
 		private CancellationToken _cancellationToken;
 
 		private UiController _uiController;
-		
+
 		private MMF_Player _boosterMineSpeedFeedbacks;
 
-		public void Initialize(IMinerCommander minerCommander, UiController uiController, BoosterMineSpeedConfig boosterMineSpeedConfig, MMF_Player boosterMineSpeedFeedbacks, CancellationToken cancellationToken)
+
+		public void Initialize(IMinerCommander minerCommander, UiController uiController, BoosterMineSpeedConfig boosterMineSpeedConfig, MMF_Player boosterMineSpeedFeedbacks,
+		CancellationToken cancellationToken)
 		{
 			_minerCommander = minerCommander;
 			_uiController = uiController;

@@ -1,8 +1,8 @@
 using _src.Scripts.Data;
+using _src.Scripts.Tools;
 using _src.Scripts.UI.Core;
-using _src.Scripts.UI.CurrenciesButtons;
+using _src.Scripts.UI.UIElements.CurrenciesButtons;
 using _src.Scripts.UI.UIElements.CurrenciesIndicators;
-using _src.Scripts.Utils;
 using TetraCreations.Attributes;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,6 +31,7 @@ namespace _src.Scripts.UI
 
 		public Canvas Canvas => _canvas;
 
+
 		[SerializeField, Required]
 		private GridLayoutGroup _gridLayoutGroupButtons;
 
@@ -50,8 +51,11 @@ namespace _src.Scripts.UI
 		[Inject]
 		private readonly GameConfig _gameConfig;
 
+
 		[Inject]
 		private IFactory<GameObject, GameObject> _factory;
+
+
 		protected override void Awake()
 		{
 			RoutineWork.InitializeComponentFromChildren(gameObject, ref _canvas);

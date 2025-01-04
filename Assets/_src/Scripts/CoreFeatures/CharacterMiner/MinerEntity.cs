@@ -1,4 +1,3 @@
-using _src.Scripts.Utils;
 using UnityEngine;
 
 
@@ -6,17 +5,25 @@ namespace _src.Scripts.CoreFeatures.CharacterMiner
 {
 	public class MinerEntity : MonoBehaviour, IMinerEntity
 	{
-		//For sample
-		private MinerAnimations _minerAnimations;
-		
-		
-		
-		private void Start()
+		private IMinerCommander _minerCommander;
+
+
+		public IMinerCommander MinerCommander => _minerCommander;
+
+
+		private IMinerAnimations _minerAnimations;
+
+
+		public IMinerAnimations MinerAnimations => _minerAnimations;
+
+
+		private void Awake()
 		{
-			RoutineWork.InitializeComponentFromGameObject(gameObject, ref _minerAnimations);
+			TryGetComponent(out _minerCommander);
+			TryGetComponent(out _minerAnimations);
+
+			if (_minerCommander is null || _minerAnimations is null)
+				Debug.LogError("Miner entity initialisation references is failed", gameObject);
 		}
-
-
-		public MinerAnimations MinerAnimations => _minerAnimations;
 	}
 }

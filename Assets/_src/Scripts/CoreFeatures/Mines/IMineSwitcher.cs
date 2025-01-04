@@ -1,7 +1,7 @@
 using _src.Scripts.Data;
 
 
-namespace _src.Scripts.CoreFeatures
+namespace _src.Scripts.CoreFeatures.Mines
 {
 	public interface IMineSwitcher
 	{

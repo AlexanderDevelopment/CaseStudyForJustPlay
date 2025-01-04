@@ -1,5 +1,7 @@
-using _src.Data.Boosters;
+using _src.Scripts.CoreFeatures;
 using _src.Scripts.CoreFeatures.CharacterMiner;
+using _src.Scripts.CoreFeatures.EventBus;
+using _src.Scripts.Data.Boosters;
 using _src.Scripts.UI.Core;
 using Cysharp.Threading.Tasks;
 using MoreMountains.Feedbacks;
@@ -8,23 +10,26 @@ using UnityEngine;
 using Zenject;
 
 
-namespace _src.Scripts.CoreFeatures
+namespace _src.Scripts.GameState
 {
 	public class BoostersCenter : MonoBehaviour
 	{
 		[Inject]
 		private UiController _uiController;
-		
+
+
 		[Inject]
-		private IMinerCommander _minerCommander;
-		
+		private IMinerEntity _minerEntity;
+
+
 		[Inject]
 		private MessageBus _messageBus;
 
 
 		[SerializeField]
 		private BoosterMineSpeed _boosterMineSpeed;
-		
+
+
 		[SerializeField, Required]
 		private BoosterMineSpeedConfig _boosterMineSpeedConfig;
 
@@ -35,7 +40,7 @@ namespace _src.Scripts.CoreFeatures
 
 		private void Start()
 		{
-			_boosterMineSpeed.Initialize(_minerCommander, _uiController, _boosterMineSpeedConfig, _boosterMineSpeedFeedbacks, gameObject.GetCancellationTokenOnDestroy());
+			_boosterMineSpeed.Initialize(_minerEntity.MinerCommander, _uiController, _boosterMineSpeedConfig, _boosterMineSpeedFeedbacks, gameObject.GetCancellationTokenOnDestroy());
 			_messageBus.Subscribe(BusMessages.OnOreCollected, _boosterMineSpeed.ExecuteConditions);
 		}
 

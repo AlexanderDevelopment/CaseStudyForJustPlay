@@ -1,4 +1,6 @@
-using _src.Scripts.Utils;
+using _src.Scripts.CoreFeatures.EventBus;
+using _src.Scripts.CoreFeatures.Mines;
+using _src.Scripts.Tools;
 using Cysharp.Threading.Tasks;
 using TetraCreations.Attributes;
 using UnityEngine;
@@ -7,21 +9,26 @@ using Zenject;
 
 namespace _src.Scripts.CoreFeatures.CharacterMiner
 {
-	public class MinerAnimations : MonoBehaviour
+	public class MinerAnimations : MonoBehaviour , IMinerAnimations
 	{
 		private Animator _animator;
-		
+
+
 		public Animator MinerAnimator => _animator;
+
 
 		[SerializeField, Required]
 		private Transform _mineOreDetector;
-		
+
+
 		private static readonly int TriggerName = Animator.StringToHash("Mine");
 		private static readonly int IdleStateName = Animator.StringToHash("Idle");
 
 
 		[Inject]
 		private MessageBus _messageBus;
+
+
 		private void Awake()
 		{
 			RoutineWork.InitializeComponentFromGameObject(gameObject, ref _animator);
@@ -31,11 +38,10 @@ namespace _src.Scripts.CoreFeatures.CharacterMiner
 		public async UniTask PlayMineAnimationAsync()
 		{
 			_animator.SetTrigger(TriggerName);
-			
-			await UniTask.WaitUntil(() => 
-				_animator.GetCurrentAnimatorStateInfo(0).shortNameHash == IdleStateName
-				&& !_animator.IsInTransition(0));
+
+			await UniTask.WaitUntil(() => _animator.GetCurrentAnimatorStateInfo(0).shortNameHash == IdleStateName && !_animator.IsInTransition(0));
 		}
+
 
 		//Invoking in animator
 		public void PlayHitPickaxeFeedbacks()
@@ -54,7 +60,6 @@ namespace _src.Scripts.CoreFeatures.CharacterMiner
 					}
 				}
 			}
-			
 		}
 	}
 }

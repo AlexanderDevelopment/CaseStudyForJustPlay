@@ -1,4 +1,4 @@
-namespace _src.Scripts.CoreFeatures
+namespace _src.Scripts.CoreFeatures.EventBus
 {
 	public static class BusMessages
 	{

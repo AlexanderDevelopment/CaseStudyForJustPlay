@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using _src.Scripts.Data;
 using AYellowpaper.SerializedCollections;
@@ -7,14 +6,15 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 
-namespace _src.Scripts.CoreFeatures
+namespace _src.Scripts.CoreFeatures.Mines
 {
 	public class MineSwitcher : MonoBehaviour, IMineSwitcher
 	{
 		[SerializeField]
 		private SerializedDictionary<CurrencyType, MineOre> _mineOres = new();
 
-		[SerializeField,ReadOnly]
+
+		[SerializeField, ReadOnly]
 		private MineOre _activeOre;
 
 

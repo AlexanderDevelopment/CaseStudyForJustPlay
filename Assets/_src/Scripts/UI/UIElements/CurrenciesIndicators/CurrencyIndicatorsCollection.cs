@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using _src.Scripts.Data;
-using _src.Scripts.UI.CurrenciesButtons;
+using _src.Scripts.UI.UIElements.CurrenciesButtons;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

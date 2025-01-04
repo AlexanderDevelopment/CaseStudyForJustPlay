@@ -1,8 +1,7 @@
-using _src.Scripts.CoreFeatures;
 using UnityEngine;
 
 
-namespace _src.Data.Boosters
+namespace _src.Scripts.Data.Boosters
 {
 	[CreateAssetMenu(fileName = "MineSpeedConfig", menuName = "GameData/Boosters/MineSpeedConfig", order = 1)]
 	public class BoosterMineSpeedConfig : ScriptableObject
