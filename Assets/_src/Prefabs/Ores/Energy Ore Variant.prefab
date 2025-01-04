@@ -56,6 +56,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 84eda01cf3c9bbb4086f5de7748ddc11, type: 2}
+    - target: {fileID: 5449170239136802880, guid: 385daea10880ef943b9586c8d87be9a7, type: 3}
+      propertyPath: managedReferences[7436183061210333240].AnimateColorGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5449170239136802880, guid: 385daea10880ef943b9586c8d87be9a7, type: 3}
+      propertyPath: managedReferences[7436183061210333240].AnimateColorGradient.key0.g
+      value: 0.7806021
+      objectReference: {fileID: 0}
+    - target: {fileID: 5449170239136802880, guid: 385daea10880ef943b9586c8d87be9a7, type: 3}
+      propertyPath: managedReferences[7436183061210333240].AnimateColorGradient.key0.r
+      value: 42.722507
+      objectReference: {fileID: 0}
     - target: {fileID: 8320193139049687226, guid: 385daea10880ef943b9586c8d87be9a7, type: 3}
       propertyPath: looping
       value: 0

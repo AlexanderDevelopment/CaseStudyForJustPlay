@@ -53,6 +53,7 @@ namespace _src.Scripts.CoreFeatures
 
 		public async UniTask PlayLifeTimeAndReturnToPool()
 		{
+			ReturnToPoolFeedbacks.InitialDelay = _lifetime - ReturnToPoolFeedbacks.TotalDuration;
 			ReturnToPoolFeedbacks.PlayFeedbacks();
 			await UniTask.Delay(TimeSpan.FromSeconds(_lifetime));
 			_spawner.ReturnToPool(this);
