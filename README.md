@@ -27,7 +27,11 @@ If the object context is unknown, **DOTween** is the simplest and most flexible 
 ---
 
 ## Problem 2: Prototype
-<iframe src="https://alexanderdevelopment.github.io/CaseStudyForJustPlayDemo/" width="740" height="1350"></iframe>
+
+[![SXlDK.gif](https://s13.gifyu.com/images/SXlDK.gif)](https://gifyu.com/image/SXlDK)
+
+[Play prototype](https://alexanderdevelopment.github.io/CaseStudyForJustPlayDemo/)
+
 
 ### Overview
 The task of creating just three buttons and a currency indicator seemed too simple to me, but for this project, as with any project, it was necessary to first organize the workspace.
