@@ -1,6 +1,6 @@
 # Problem Solutions and Code Explanation
 
-This repository contains solutions to three distinct problems, each showcasing different approaches to development challenges in Unity and C#. Below is a detailed explanation of each problem and its solution.
+Case study of Just Play solution
 
 ---
 
@@ -23,7 +23,7 @@ The solution to moving objects in Unity depends on the type of object and its in
 
 ### Default Approach
 If the object context is unknown, **DOTween** is the simplest and most flexible starting point. It can be replaced later as the requirements become clearer.
-
+You can also use the regular Vector3.MoveTowards, and to determine if the object has reached the destination, use Vector3.Distance(a, b).
 ---
 
 ## Problem 2: Prototype
