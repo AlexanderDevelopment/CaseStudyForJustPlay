@@ -1,3 +1,4 @@
+
 # Problem Solutions and Code Explanation
 
 Case study of Just Play solution
@@ -21,14 +22,15 @@ The solution to moving objects in Unity depends on the type of object and its in
 4. **Physics-Interacting Objects**:
    - Move these objects using **RigidBody** to ensure they respect game physics. Avoid using `transform` for movement, as it bypasses physics calculations.
 
-# Default Approach
+#### Default Approach
 If the object context is unknown, **DOTween** is the simplest and most flexible starting point. It can be replaced later as the requirements become clearer.
 You can also use the regular Vector3.MoveTowards, and to determine if the object has reached the destination, use Vector3.Distance(a, b).
+
 ---
 
 ## Problem 2: Prototype
 
-![SXlDK.gif](https://github.com/AlexanderDevelopment/CaseStudyForJustPlayDemo/blob/main/demo.gif)
+![demo.gif](https://github.com/AlexanderDevelopment/CaseStudyForJustPlayDemo/blob/main/demo.gif)
 
 [Play prototype](https://alexanderdevelopment.github.io/CaseStudyForJustPlayDemo/)
 
