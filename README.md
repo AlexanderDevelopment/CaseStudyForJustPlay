@@ -28,7 +28,7 @@ You can also use the regular Vector3.MoveTowards, and to determine if the object
 
 ## Problem 2: Prototype
 
-[![SXlDK.gif](https://github.com/AlexanderDevelopment/CaseStudyForJustPlayDemo/blob/main/demo.gif)
+![SXlDK.gif](https://github.com/AlexanderDevelopment/CaseStudyForJustPlayDemo/blob/main/demo.gif)
 
 [Play prototype](https://alexanderdevelopment.github.io/CaseStudyForJustPlayDemo/)
 
