@@ -22,6 +22,13 @@ The solution to moving objects in Unity depends on the type of object and its in
 4. **Physics-Interacting Objects**:
    - Move these objects using **RigidBody** to ensure they respect game physics. Avoid using `transform` for movement, as it bypasses physics calculations.
 
+### Methods for determining object arrival from point A to point B:
+
+- Vector3.Distance: Use this method while accounting for minor error margins (or Vector2 for planar movement).
+- NavMeshAgent: While it has built-in tools for arrival detection, they are unreliable. I prefer not to use them, opting instead for Vector3.Distance.
+- UniTask: Set a predefined distance for the movement task. This allows flexibility in choosing where to execute it—Update, FixedUpdate, LateUpdate, or even at intervals of time or frames.
+
+
 #### Default Approach
 If the object context is unknown, **DOTween** is the simplest and most flexible starting point. It can be replaced later as the requirements become clearer.
 You can also use the regular Vector3.MoveTowards, and to determine if the object has reached the destination, use Vector3.Distance(a, b).
